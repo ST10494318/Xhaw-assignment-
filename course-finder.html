@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Finder - Empowering the Nation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+     <header>
+    <div class="container">
+        <nav>
+            <a href="index.html" class="logo">
+                <img src="logo/logo.png" alt="Empowering the Nation">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="6-month-courses.html">6-Month Courses</a></li>
+                <li><a href="6-week-courses.html">6-Week Courses</a></li>
+                <li><a href="get-quote.html">Get Quote</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Find Your Perfect Course</h1>
+            <p>Answer a few questions and we'll recommend the best courses for your goals</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="wizard">
+                <!-- Step 1: Goals -->
+                <div class="wizard-step active" id="wizardStep1">
+                    <h2>What are your main goals?</h2>
+                    <p>Select what you want to achieve with your training</p>
+                    
+                    <button class="wizard-option" onclick="selectWizardOption(1, 'career-advancement')">
+                        <strong>Career Advancement</strong><br>
+                        <small>Get promoted or find better employment opportunities</small>
+                    </button>
+                    
+                    <button class="wizard-option" onclick="selectWizardOption(1, 'new-skills')">
+                        <strong>Learn New Skills</strong><br>
+                        <small>Develop new abilities for personal or professional growth</small>
+                    </button>
+                    
+                    <button class="wizard-option" onclick="selectWizardOption(1, 'entrepreneur')">
+                        <strong>Start a Business</strong><br>
+                        <small>Gain skills to launch your own small business</small>
+                    </button>
+                    
+                    <button class="wizard-option" onclick="selectWizardOption(1, 'income-increase')">
+                        <strong>Increase Income</strong><br>
+                        <small>Learn skills that directly lead to higher earnings</small>
+                    </button>
+                </div>
+
+                <!-- Step 2: Experience -->
+                <div class="wizard-step" id="wizardStep2">
+                    <h2>What's your current experience level?</h2>
+                    <p>Help us understand your background</p>
+                    
+                    <button class="wizard-option" onclick="selectWizardOption(2, 'beginner')">
+                        <strong>Beginner</strong><br>
+                        <small>Little to no experience in this field</small>
+                    </button>
+                    
+                    <button class="wizard-option" onclick="selectWizardOption(2, 'some-experience')">
+                        <strong>Some Experience</strong><br>
+                        <small>Basic knowledge or informal experience</small>
+                    </button>
+                    
+                    <button class="wizard-option" onclick="selectWizardOption(2, 'experienced')">
+                        <strong>Experienced</strong><br>
+                        <small>Substantial experience looking to formalize skills</small>
+                    </button>
+                </div>
+
+                <!-- Step 3: Schedule -->
+                <div class="wizard-step" id="wizardStep3">
+                    <h2>What's your preferred learning schedule?</h2>
+                    <p>How much time can you commit to training?</p>
+                    
+                    <button class="wizard-option" onclick="selectWizardOption(3, 'full-time')">
+                        <strong>Full-Time Commitment</strong><br>
+                        <small>I can dedicate 20+ hours per week</small>
+                    </button>
+                    
+                    <button class="wizard-option" onclick="selectWizardOption(3, 'part-time')">
+                        <strong>Part-Time Study</strong><br>
+                        <small>I can dedicate 10-15 hours per week</small>
+                    </button>
+                    
+                    <button class="wizard-option" onclick="selectWizardOption(3, 'flexible')">
+                        <strong>Flexible Learning</strong><br>
+                        <small>I need a schedule that fits around my current work</small>
+                    </button>
+                </div>
+
+                <!-- Step 4: Results -->
+                <div class="wizard-step" id="wizardStep4">
+                    <div id="wizardResults">
+                        <!-- Results loaded by JavaScript -->
+                    </div>
+                </div>
+
+                <div class="wizard-nav" id="wizardNavigation">
+                    <button onclick="showWizardStep(1)" class="btn btn-outline" style="visibility: hidden;">Previous</button>
+                    <span>Step <span id="currentStep">1</span> of 3</span>
+                    <button onclick="showWizardStep(2)" class="btn btn-outline" style="visibility: hidden;">Next</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background-color: #f8fafc;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Not Sure Where to Start?</h2>
+                <p>Here are our most popular courses for different goals</p>
+            </div>
+
+            <div class="course-grid">
+                <div class="course-card">
+                    <div class="course-image">
+                        <span><img src="IMAGE/first AID.jpg" alt=""></span>
+                    </div>
+                    <div class="course-content">
+                        <span class="course-duration">6 Months</span>
+                        <h3>First Aid</h3>
+                        <div class="course-price">R1,500</div>
+                        <p>Comprehensive first aid awareness and basic life support training for emergency situations.</p>
+                        <a href="first-aid.html" class="btn">Course Details</a>
+                    </div>
+                </div>
+
+               <div class="course-card">
+                    <div class="course-image">
+                        <span><img src="IMAGE/SEWING.jpg" alt=""></span>
+                    </div>
+                    <div class="course-content">
+                        <span class="course-duration">6 Months</span>
+                        <h3>Sewing</h3>
+                        <div class="course-price">R1,500</div>
+                        <p>Professional alterations and garment creation training for fashion and textile skills.</p>
+                        <a href="sewing.html" class="btn">Course Details</a>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-image">
+                        <span><img src="IMAGE/LIFE SKILLS.jpg" alt=""></span>
+                    </div>
+                    <div class="course-content">
+                        <span class="course-duration">6 Months</span>
+                        <h3>Life Skills</h3>
+                        <div class="course-price">R1,500</div>
+                        <p>Essential life navigation skills including financial literacy and personal development.</p>
+                        <a href="life-skills.html" class="btn">Course Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Empowering the Nation</h3>
+                    <p>Transforming lives through professional skills training and career development programs.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p>Email: info@empoweringthenation.co.za</p>
+                    <p>Phone: 067 564 4125</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <p><a href="get-quote.html">Get Quote</a></p>
+                    <p><a href="employers.html">For Employers</a></p>
+                    <p><a href="blog.html">Blog</a></p>
+                    <p><a href="contact.html">Contact Us</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear">2024</span> Empowering the Nation. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
