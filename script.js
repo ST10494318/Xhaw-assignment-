@@ -152,9 +152,15 @@ function calculateQuote() {
     const vatAmount = discountedSubtotal * vatRate;
     const totalAmount = discountedSubtotal + vatAmount;
 
-    // Update display
+    // Update display - CORRECTED: Show discount as negative amount
     subtotalElement.textContent = `R ${subtotal.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
-    discountElement.textContent = `-R ${discountAmount.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})} (${(discountRate * 100).toFixed(0)}%)`;
+    
+    if (discountAmount > 0) {
+        discountElement.textContent = `-R ${discountAmount.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})} (${(discountRate * 100).toFixed(0)}%)`;
+    } else {
+        discountElement.textContent = `R ${discountAmount.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})} (${(discountRate * 100).toFixed(0)}%)`;
+    }
+    
     vatElement.textContent = `R ${vatAmount.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
     totalElement.textContent = `R ${totalAmount.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
 
@@ -186,7 +192,7 @@ function showDiscountExplanation(courseCount, discountRate) {
         existingExplanation.remove();
     }
 
-    if (courseCount > 0 && discountRate > 0) {
+    if (courseCount > 0) {
         const discountExplanation = document.createElement('div');
         discountExplanation.id = 'discountExplanation';
         discountExplanation.style.cssText = 'background: #f0f9ff; padding: 1rem; border-radius: 8px; margin: 1rem 0; border-left: 4px solid var(--primary-color);';
