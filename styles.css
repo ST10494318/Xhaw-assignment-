@@ -87,7 +87,6 @@ nav {
     color: white;
 }
 
-/* ===== RESPONSIVE NAVIGATION STYLES ===== */
 /* Mobile Navigation Toggle */
 .nav-toggle {
     display: none;
@@ -113,12 +112,10 @@ nav {
 
 /* Mobile-first responsive design */
 @media (max-width: 768px) {
-    /* Show hamburger menu */
     .nav-toggle {
         display: flex;
     }
     
-    /* Hide regular navigation links */
     .nav-links {
         position: fixed;
         top: 80px;
@@ -160,7 +157,6 @@ nav {
         color: white;
     }
     
-    /* Adjust header for mobile */
     nav {
         position: relative;
         padding: 1rem 0;
@@ -174,11 +170,10 @@ nav {
 /* Enhanced desktop navigation */
 @media (min-width: 769px) {
     .nav-links {
-        display: flex !important; /* Ensure it's always visible on desktop */
+        display: flex !important; 
     }
 }
 
-/* Hamburger animation */
 .nav-toggle.active span:nth-child(1) {
     transform: rotate(45deg) translate(6px, 6px);
 }
@@ -191,7 +186,6 @@ nav {
     transform: rotate(-45deg) translate(6px, -6px);
 }
 
-/* Prevent body scroll when menu is open */
 body.menu-open {
     overflow: hidden;
 }
@@ -217,7 +211,6 @@ body.menu-open {
     opacity: 0.9;
 }
 
-/* Buttons */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -282,7 +275,6 @@ body.menu-open {
     transform: translateY(-1px);
 }
 
-/* Sections */
 .section {
     padding: clamp(3rem, 8vw, 5rem) 0;
 }
@@ -498,7 +490,7 @@ body.menu-open {
     padding-bottom: 0 !important;
 }
 
-/* Testimonials */
+/* Testimonial */
 .testimonials {
     background: linear-gradient(135deg, #f8fafc, #e2e8f0);
     padding: 4rem 0;
@@ -693,7 +685,6 @@ body.menu-open {
     border-bottom: none;
 }
 
-/* Course Wizard - FULL STYLES RE-ADDED */
 .wizard {
     background: white;
     border-radius: var(--border-radius);
@@ -830,7 +821,7 @@ body.menu-open {
     border-bottom: none;
 }
 
-/* Contact Page Styles */
+/* Contact Page  */
 .contact-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -1137,7 +1128,6 @@ footer {
     opacity: 0.7;
 }
 
-/* Utility Classes */
 .text-center {
     text-align: center;
 }
@@ -1158,7 +1148,7 @@ footer {
     pointer-events: none;
 }
 
-/* Animation for interactive elements */
+
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
@@ -1341,7 +1331,6 @@ textarea:focus {
     }
 }
 
-/* High contrast mode support */
 @media (prefers-contrast: high) {
     :root {
         --primary-color: #000080;
@@ -1354,7 +1343,6 @@ textarea:focus {
     }
 }
 
-/* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
     * {
         animation-duration: 0.01ms !important;
