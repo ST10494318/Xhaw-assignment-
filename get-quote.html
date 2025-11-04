@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Quote - Empowering the Nation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+     <header>
+    <div class="container">
+        <nav>
+            <a href="index.html" class="logo">
+                <img src="logo/logo.png" alt="Empowering the Nation">
+            </a>
+            <ul class="nav-links">
+               <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="6-month-courses.html">6-Month Courses</a></li>
+                <li><a href="6-week-courses.html">6-Week Courses</a></li>
+                <li><a href="get-quote.html">Get Quote</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Get Your Course Quote</h1>
+            <p>Select your desired courses and get an instant discounted quote with our special bundle pricing.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="quote-form">
+                <form id="quoteForm">
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" name="fullName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="queryType">I am registering as:</label>
+                        <select id="queryType" name="queryType">
+                            <option value="individual">Individual Learner</option>
+                            <option value="employer">Employer (Registering Staff)</option>
+                            <option value="group">Group Registration</option>
+                        </select>
+                    </div>
+
+                    <h3>Select Courses</h3>
+                    <p>Choose one or more courses to see applicable discounts. The more courses you select, the higher your discount!</p>
+
+                    <div class="checkbox-group" id="coursesCheckbox">
+                        <!-- Courses loaded by JavaScript -->
+                    </div>
+
+                    <div class="payment-options">
+                        <h4>Preferred Payment Option</h4>
+                        <div class="payment-methods">
+                            <label>
+                                <input type="radio" name="payment" value="full" checked>
+                                Full Payment
+                            </label>
+                            <label>
+                                <input type="radio" name="payment" value="installments">
+                                Installment Plan
+                            </label>
+                            <label>
+                                <input type="radio" name="payment" value="employer">
+                                Employer Sponsorship
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="quote-summary" id="quoteSummary">
+                        <h4>Quote Summary</h4>
+                        <div class="quote-line">
+                            <span>Subtotal:</span>
+                            <span id="subtotal">R 0.00</span>
+                        </div>
+                        <div class="quote-line">
+                            <span>Discount Applied:</span>
+                            <span id="discount">R 0.00 (0%)</span>
+                        </div>
+                        <div class="quote-line">
+                            <span>VAT (15%):</span>
+                            <span id="vat">R 0.00</span>
+                        </div>
+                        <div class="quote-line quote-total">
+                            <span>Total Amount Due:</span>
+                            <span id="total">R 0.00</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="button" class="btn" onclick="calculateQuote()">Update Quote</button>
+                        <button type="button" class="btn btn-outline" onclick="saveQuote()">Save Quote</button>
+                        <button type="submit" class="btn btn-primary">Submit Request</button>
+                    </div>
+
+                    <div class="text-center">
+                        <small>By submitting, you agree to our terms and conditions. A consultant will contact you within 24 hours with your formal invoice.</small>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background-color: #f8fafc;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Discount Structure</h2>
+                <p>Save more when you register for multiple courses</p>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h3>1 Course</h3>
+                    <div class="course-price">0% OFF</div>
+                    <p>Perfect for focused skill development</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>2 Courses</h3>
+                    <div class="course-price">5% OFF</div>
+                    <p>Great for complementary skills</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>3 Courses</h3>
+                    <div class="course-price">10% OFF</div>
+                    <p>Ideal for career transformation</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>4+ Courses</h3>
+                    <div class="course-price">15% OFF</div>
+                    <p>Maximum savings for comprehensive training</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Empowering the Nation</h3>
+                    <p>Transforming lives through professional skills training and career development programs.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p>Email: info@empoweringthenation.co.za</p>
+                    <p>Phone: 067 564 4125</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <p><a href="get-quote.html">Get Quote</a></p>
+                    <p><a href="contact.html">Contact Us</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear">2024</span> Empowering the Nation. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
