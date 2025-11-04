@@ -1,6 +1,6 @@
 // Course data with prices
 const courses = [
-    { id: 'first-aid', name: 'First Aid (6-Month)', price: 1500 , duration: '6 Months' },
+    { id: 'first-aid', name: 'First Aid (6-Month)', price: 1500, duration: '6 Months' },
     { id: 'sewing', name: 'Sewing (6-Month)', price: 1500, duration: '6 Months' },
     { id: 'landscaping', name: 'Landscaping (6-Month)', price: 1500, duration: '6 Months' },
     { id: 'life-skills', name: 'Life Skills (6-Month)', price: 1500, duration: '6 Months' },
@@ -38,43 +38,6 @@ const testimonials = [
         course: "Life Skills"
     }
 ];
-
-// Blog posts data
-const blogPosts = [
-    {
-        title: "5 Ways Upskilling Benefits Domestic Workers",
-        excerpt: "Discover how additional training can transform careers and increase earning potential for domestic workers across South Africa.",
-        date: "2024-01-15",
-        category: "Career Growth"
-    },
-    {
-        title: "The Importance of First Aid Training in Households",
-        excerpt: "Learn why first aid certification is becoming essential for domestic workers and how it enhances household safety.",
-        date: "2024-01-08",
-        category: "Safety"
-    },
-    {
-        title: "From Employee to Entrepreneur: Success Stories",
-        excerpt: "Inspiring stories of individuals who used their training to start successful small businesses in their communities.",
-        date: "2024-01-02",
-        category: "Entrepreneurship"
-    }
-];
-
-// Course calendar data
-const courseCalendar = {
-    '2024-02': [
-        { date: '2024-02-05', course: 'First Aid', type: '6-Month', location: 'Johannesburg CBD' },
-        { date: '2024-02-12', course: 'Sewing', type: '6-Month', location: 'Sandton' },
-        { date: '2024-02-19', course: 'Child Minding', type: '6-Week', location: 'Soweto' },
-        { date: '2024-02-26', course: 'Landscaping', type: '6-Month', location: 'Johannesburg CBD' }
-    ],
-    '2024-03': [
-        { date: '2024-03-04', course: 'Cooking', type: '6-Week', location: 'Sandton' },
-        { date: '2024-03-11', course: 'Life Skills', type: '6-Month', location: 'Soweto' },
-        { date: '2024-03-18', course: 'Garden Maintenance', type: '6-Week', location: 'Johannesburg CBD' }
-    ]
-};
 
 // ===== MOBILE NAVIGATION FUNCTIONALITY =====
 function initializeMobileNavigation() {
@@ -262,25 +225,6 @@ function loadTestimonials() {
     `).join('');
 }
 
-// Load blog posts
-function loadBlogPosts() {
-    const container = document.getElementById('blogContainer');
-    if (!container) return;
-
-    container.innerHTML = blogPosts.map(post => `
-        <article class="blog-card">
-            <div class="blog-image">📝</div>
-            <div class="blog-content">
-                <span class="category">${post.category}</span>
-                <h3>${post.title}</h3>
-                <p class="date">${new Date(post.date).toLocaleDateString()}</p>
-                <p>${post.excerpt}</p>
-                <a href="#" class="btn btn-outline">Read More</a>
-            </div>
-        </article>
-    `).join('');
-}
-
 // Initialize FAQ functionality
 function initializeFAQ() {
     const faqQuestions = document.querySelectorAll('.faq-question');
@@ -301,201 +245,6 @@ function initializeFAQ() {
             }
         });
     });
-}
-
-// Course Finder Wizard
-let currentWizardStep = 1;
-const wizardSelections = {};
-
-function initializeWizard() {
-    showWizardStep(1);
-    updateWizardNavigation();
-}
-
-function showWizardStep(step) {
-    document.querySelectorAll('.wizard-step').forEach(s => s.classList.remove('active'));
-    const stepElement = document.getElementById(`wizardStep${step}`);
-    if (stepElement) {
-        stepElement.classList.add('active');
-    }
-    currentWizardStep = step;
-    updateWizardNavigation();
-}
-
-function updateWizardNavigation() {
-    const nav = document.getElementById('wizardNavigation');
-    if (!nav) return;
-    
-    const prevBtn = nav.querySelector('button:first-child');
-    const nextBtn = nav.querySelector('button:last-child');
-    const stepIndicator = document.getElementById('currentStep');
-    
-    if (stepIndicator) {
-        stepIndicator.textContent = currentWizardStep;
-    }
-    
-    // Show/hide previous button
-    if (prevBtn) {
-        prevBtn.style.visibility = currentWizardStep > 1 ? 'visible' : 'hidden';
-        prevBtn.onclick = () => showWizardStep(currentWizardStep - 1);
-    }
-    
-    // Show/hide next button
-    if (nextBtn) {
-        if (currentWizardStep < 3) {
-            nextBtn.style.visibility = 'visible';
-            nextBtn.textContent = 'Next →';
-            nextBtn.onclick = () => showWizardStep(currentWizardStep + 1);
-        } else {
-            nextBtn.style.visibility = 'hidden';
-        }
-    }
-}
-
-function selectWizardOption(step, value) {
-    wizardSelections[`step${step}`] = value;
-    
-    if (step === 3) {
-        showRecommendedCourses();
-    } else {
-        showWizardStep(step + 1);
-    }
-}
-
-function showRecommendedCourses() {
-    const recommendations = getCourseRecommendations();
-    const container = document.getElementById('wizardResults');
-    
-    if (!container) return;
-    
-    container.innerHTML = `
-        <h3>Recommended Courses for You</h3>
-        <div class="recommended-courses">
-            ${recommendations.map(course => `
-                <div class="course-recommendation" style="background: #f8fafc; padding: 1.5rem; border-radius: 8px; margin: 1rem 0;">
-                    <h4>${course.name}</h4>
-                    <p>${course.reason}</p>
-                    <a href="${course.id}.html" class="btn">View Course Details</a>
-                </div>
-            `).join('')}
-        </div>
-        <div class="wizard-nav">
-            <button onclick="showWizardStep(1)" class="btn btn-outline">Start Over</button>
-            <a href="get-quote.html" class="btn btn-primary">Get Quote for These Courses</a>
-        </div>
-    `;
-    
-    showWizardStep(4);
-}
-
-function getCourseRecommendations() {
-    const goal = wizardSelections.step1;
-    const experience = wizardSelections.step2;
-    const schedule = wizardSelections.step3;
-    
-    let recommendations = [];
-    
-    if (goal === 'career-advancement' || goal === 'income-increase') {
-        recommendations.push({
-            name: 'First Aid',
-            id: 'first-aid',
-            reason: 'Essential certification that increases employability and earning potential by up to 30%.'
-        });
-    }
-    
-    if (goal === 'entrepreneur' || experience === 'some-experience') {
-        recommendations.push({
-            name: 'Sewing',
-            id: 'sewing',
-            reason: 'Perfect for starting a small alterations business or fashion enterprise with low startup costs.'
-        });
-    }
-    
-    if (goal === 'new-skills' || schedule === 'flexible') {
-        recommendations.push({
-            name: 'Life Skills',
-            id: 'life-skills',
-            reason: 'Fundamental skills that benefit all aspects of personal and professional life.'
-        });
-    }
-    
-    // Always include at least one recommendation
-    if (recommendations.length === 0) {
-        recommendations.push({
-            name: 'Life Skills',
-            id: 'life-skills',
-            reason: 'A great starting point for personal and professional development.'
-        });
-    }
-    
-    return recommendations;
-}
-
-// Calendar functionality
-let currentCalendarDate = new Date();
-
-function initializeCalendar() {
-    renderCalendar(currentCalendarDate);
-}
-
-function renderCalendar(date) {
-    const calendarGrid = document.getElementById('calendarGrid');
-    const monthYear = document.getElementById('calendarMonthYear');
-    
-    if (!calendarGrid || !monthYear) return;
-    
-    const year = date.getFullYear();
-    const month = date.getMonth();
-    
-    monthYear.textContent = date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
-    
-    const firstDay = new Date(year, month, 1);
-    const lastDay = new Date(year, month + 1, 0);
-    const startingDay = firstDay.getDay();
-    const daysInMonth = lastDay.getDate();
-    
-    // Create calendar header
-    let calendarHTML = '';
-    const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-    
-    days.forEach(day => {
-        calendarHTML += `<div class="calendar-day header">${day}</div>`;
-    });
-    
-    // Add empty cells for days before the first day of the month
-    for (let i = 0; i < startingDay; i++) {
-        calendarHTML += `<div class="calendar-day"></div>`;
-    }
-    
-    // Add days of the month
-    for (let day = 1; day <= daysInMonth; day++) {
-        const dateString = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-        const monthKey = `${year}-${String(month + 1).padStart(2, '0')}`;
-        const dayCourses = courseCalendar[monthKey]?.filter(course => course.date === dateString) || [];
-        
-        const hasCourse = dayCourses.length > 0;
-        const dayClass = hasCourse ? 'calendar-day has-course' : 'calendar-day';
-        
-        calendarHTML += `<div class="${dayClass}">${day}`;
-        
-        dayCourses.forEach(course => {
-            calendarHTML += `<div class="course-event">${course.course}</div>`;
-        });
-        
-        calendarHTML += `</div>`;
-    }
-    
-    calendarGrid.innerHTML = calendarHTML;
-}
-
-function prevMonth() {
-    currentCalendarDate.setMonth(currentCalendarDate.getMonth() - 1);
-    renderCalendar(currentCalendarDate);
-}
-
-function nextMonth() {
-    currentCalendarDate.setMonth(currentCalendarDate.getMonth() + 1);
-    renderCalendar(currentCalendarDate);
 }
 
 // Newsletter subscription
@@ -626,14 +375,10 @@ function showSubmissionSuccess(formData) {
 
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
-    // Your existing initialization code...
     initializeCourses();
     calculateQuote();
     loadTestimonials();
-    loadBlogPosts();
     initializeFAQ();
-    initializeWizard();
-    initializeCalendar();
     initializeFormHandlers();
     loadSavedQuote();
     
@@ -660,11 +405,3 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 });
-
-// Utility function to format currency
-function formatCurrency(amount) {
-    return 'R ' + amount.toLocaleString(undefined, {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-    });
-}
